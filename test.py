@@ -9,12 +9,12 @@ chars = np.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
 
 # Check whether all necessary command line arguments were given, if not exit and show a
 # usage hint. Since the original comment will also be counted as argument we need 4.
-if len(sys.argv) != 4: print( 'Usage: ./asciinator.py image scale factor' ); sys.exit()
 
 # Get some important constants like the filename f, the image size scaling SC and a
 # intensity correction factor from the command line arguments. The WCF is a width correction
 # factor we will use since most font characters are higher than wide.
-f, SC, GCF, WCF = sys.argv[1], float(sys.argv[2]), float(sys.argv[3]), 7/4
+# f, SC, GCF, WCF = './v2-28c3573c0bf92dcd0fa306f8fa426d9f_hd.jpg', float(sys.argv[2]), float(sys.argv[3]), 7/4
+f, SC, GCF, WCF = './JZM1947.jpg', 0.1, 2, 8/4
 
 # This line opens the image
 img = Image.open(f)
