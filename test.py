@@ -1,18 +1,18 @@
-import sys; from PIL import Image; import numpy as np
+import sys;
+import numpy
+import cv2
 
-chars = np.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
+def image_to_ascii(image, pixels_in_char = 8, threshold_gray = 3, height_width_rate = 7/4):
+    chars = numpy.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
+    size = (round(image.shape[0] * height_width_rate / pixels_in_char), round(image.shape[1] / pixels_in_char) )
+    image = numpy.sum(cv2.resize(image, size), axis = 2)
+    image -= image.min()
+    image = (1.0 - image / image.max())**threshold_gray * (chars.size - 1)
+    return '\n'.join( (''.join(r) for r in chars[image.astype(int)]))
 
-f, SC, GCF, WCF = './videos/JZM1947.jpg', 0.1, 2, 8/4
+def testcases():
+    image = cv2.imread('./videos/JZM1947.jpg')
+    print(image_to_ascii(image))
 
-img = Image.open(f)
-
-import pdb; pdb.set_trace()
-S = (round(img.size[0]*SC*WCF), round(img.size[1]*SC) )
-
-img = np.sum( np.asarray( img.resize(S) ), axis=2)
-
-img -= img.min()
-
-img = (1.0 - img/img.max())**GCF*(chars.size-1)
-
-print( "\n".join( ("".join(r) for r in chars[img.astype(int)]) ) )
+if __name__ == '__main__':
+    testcases()
