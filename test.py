@@ -1,8 +1,11 @@
-import sys;
+import shutil
 import numpy
 import cv2
 
-def image_to_ascii(image, pixels_in_char = 8, threshold_gray = 3, height_width_rate = 7/4):
+def get_window_size():
+    return shutil.get_terminal_size()
+
+def image_to_ascii(image, width, threshold_gray = 3, height_width_rate = 7/4):
     chars = numpy.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
     size = (round(image.shape[0] * height_width_rate / pixels_in_char), round(image.shape[1] / pixels_in_char) )
     image = numpy.sum(cv2.resize(image, size), axis = 2)
