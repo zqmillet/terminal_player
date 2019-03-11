@@ -5,7 +5,7 @@ import cv2
 def get_window_size():
     return shutil.get_terminal_size()
 
-def image_to_ascii(image, width = None, threshold_gray = 3, height_width_rate = 2.2):
+def decode(image, width = None, threshold_gray = 3, height_width_rate = 2.2):
     if width is None:
         width, _ = get_window_size()
     pixels_in_char = image.shape[1] / width
