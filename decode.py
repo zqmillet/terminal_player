@@ -15,7 +15,7 @@ def decode(image, width = None, threshold_gray = 3, height_width_rate = 2.2):
     image = numpy.sum(cv2.resize(image, size), axis = 2)
     image -= image.min()
     image = (1.0 - image / image.max())**threshold_gray * (chars.size - 1)
-    return '\n'.join((''.join(r) for r in chars[image.astype(int)]))
+    return '\n'.join((''.join(r) for r in chars[image.astype(int)])), image.shape[0]
 
 def testcases():
     image = cv2.imread('./videos/JZM1947.jpg')
