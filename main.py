@@ -15,8 +15,6 @@ def play(file_path):
         if not success:
             break
 
-        if cv2.waitKey(28) & 0xFF == ord("q"):
-            break
         image, height = decode(image)
         print(MOVE_UP * height + image)
         sleep_time = 1/frame_per_second - (time.time() - now)
