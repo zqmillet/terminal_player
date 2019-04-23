@@ -18,7 +18,7 @@ def play(file_path):
         image, height = decode(image)
         print(MOVE_UP * height + image)
         sleep_time = 1/frame_per_second - (time.time() - now)
-        time.sleep(sleep_time)
+        time.sleep(sleep_time if sleep_time > 0 else 0)
 
 def testcases():
     play('./videos/plus1s.mp4')
