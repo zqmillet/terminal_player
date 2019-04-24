@@ -2,6 +2,21 @@ import shutil
 import numpy
 import cv2
 
+class Symbols:
+    A = '▀▄'
+    B = '██'
+    C = '▄▀'
+    S0000 = '  '
+    S0001 = ' ▄'
+    S0010 = '▄ '
+    S0011 = ' ▀'
+    S000 = ' ▀'
+    G = '  '
+    D = '▀ '
+    E = ' '
+    F = '▄ '
+    G = ' ▄ '
+
 def get_window_size():
     return shutil.get_terminal_size()
 
