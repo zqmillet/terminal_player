@@ -9,6 +9,7 @@ def get_window_size():
 
 class Decoder(object):
     gray_chars = numpy.asarray(list(' .,:;irsXA253hMHGS#9B&@'))
+    block_char = '█'
     threshold_gray = 3
     height_width_rate = 2.2
 
